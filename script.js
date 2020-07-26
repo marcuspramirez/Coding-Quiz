@@ -17,34 +17,31 @@ const choiceC = document.getElementById("C");
 let questions  = [
     {
     question : "What does HTML stand for?",
-    choiceA : "Helicobactor Time Manager Line",
-    choiceB : "Hyper Text Markup Language",
-    choiceC : "Hyper Text Minor Linkage",
+    choiceA : "A: Helicobactor Time Manager Line",
+    choiceB : "B: Hyper Text Markup Language",
+    choiceC : "C: Hyper Text Minor Linkage",
     correct : "B"
     },
 
     {
     question : "What does CSS stand for ?",
-    choiceA : "Cascading Style Sheets",
-    choiceB : "Cascading Style Samples",
-    choiceC : "Catche Style Simplified",
+    choiceA : "A: Cascading Style Sheets",
+    choiceB : "B: Cascading Style Samples",
+    choiceC : "C: Catche Style Simplified",
     correct : "A"
     },
 
     {
     question : "What does JS stand for?",
-    choiceA : "JavaSheet",
-    choiceB : "JavaScript",
-    choiceC : "JavaStyle",
+    choiceA : "A: JavaSheet",
+    choiceB : "B: JavaScript",
+    choiceC : "C: JavaStyle",
     correct : "B"
     },
 
 ]
 
 // Create Some Variables
-
-
-
 // Render Questions
 
 const lastQuestion = questions.length - 1;
@@ -100,13 +97,13 @@ function renderCounter() {
             renderQuestion();
         }else{
             // End of quiz and counter and show the score
+            clearInterval(TIMER);
+            scoreRender();
+           
         }
     }
     
 }
-
-
-
 
 
 // Check Answer Function
@@ -122,6 +119,7 @@ function checkAnswer(answer){
         runningQuestion++;
         renderQuestion();
     }else{
+        // End of quiz and show the score
         clearInterval(TIMER);
         scoreRender();
     }
@@ -135,5 +133,18 @@ function answerIsCorrect(){
 // Answer is Wrong
 function answerIsWrong(){
     document.getElementById(runningQuestion).style.backgroundColor = "red";
+}
+
+// Score render
+function scoreRender(){
+    // This displays the score using the variable scoreDiv created on top of the page
+    scoreDiv.style.display = "block";
+
+    // calculate the amount of question percent answered by the user
+    const scorePercent = Math.round (100 * score/questions.length);
+
+    scoreDiv.innerHTML += "<p>" + scorePercent + "%</p>";
+
+    
 }
 

@@ -1,8 +1,34 @@
-h1 {
-    border: solid blue;
-    position: absolute;
-    left: 50%;
-    right: 50%;
-    margin: 150px;
-    padding: 50px;
+#start {
+    background-color: rgb(230, 198, 19);
+    color: rgb(43, 5, 124);
+    width: 300px;
+    height: 100px;
+    font-weight: bolder;
+    font-size: 25px;
+    
+}
+
+body {
+    background-color: rgb(43, 5, 124);
+}
+
+#choices {
+    color: rgb(230, 198, 19);
+    font-size: 25px;
+    text-align: center;
+}
+
+#question {
+    color: rgb(230, 198, 19);
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+}
+
+#timer {
+    color: rgb(230, 198, 19);
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+
 }
