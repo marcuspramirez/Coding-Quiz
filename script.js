@@ -124,7 +124,7 @@ function reconcileQuestion(answer){
         // End of quiz and show the score
         quiz.style.display = 'none';
         scoreRender();
-        //CHeck if user made highscore board and if so let htem input initials
+        //input initials
     }
     
     }
@@ -150,24 +150,18 @@ function scoreRender(){
 
     scoreDiv.innerHTML += "<p>" + scorePercent + "%</p>";
     scoreDiv.innerHTML += "<input id='initials' placeholder='initials'>";
-    scoreDiv.innerHTML += "<button id='high-score-ini' onclick=''>Save</button>";
-
-    //We need functoin for onclick
- 
-   
-
-
-    //Data store in local storage must be a string
-    //[{}, {}] => JSON.stringify()
-//JSON.parse()
-//localStorage.getItem()
-//localStorage.setItem()
-
-// input intials and log high score at the end of quiz
-
+    scoreDiv.innerHTML += "<button id='high' onclick=''>Save</button>";
 
     
 }
+
+scoreDiv.addEventListener("click", highScore);
+
+function highScore(){
+    var clickedName = document.getElementById("initials").value;  
+    var highScore = document.getElementById("high");  
+    high.innerHTML += clickedName + ":" + score + "<br>";  
+    high.innerHTML += "<input type='button' onClick=reset(this) value='reset'></input>";}
 
 
 
