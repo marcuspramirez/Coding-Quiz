@@ -14,4 +14,4 @@ THEN the quiz is over
 WHEN the quiz is over
 THEN the user can save user initials and score
 
-
+![](assets/Codequiz.PNG)
