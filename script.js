@@ -4,9 +4,8 @@ const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
 const qImg = document.getElementById("qImg");
 const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("score");
+const scoreDiv = document.getElementById("scoreContainer");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
@@ -21,6 +20,8 @@ let questions  = [
     choiceB : "B: Hyper Text Markup Language",
     choiceC : "C: Hyper Text Minor Linkage",
     correct : "B"
+    
+
     },
 
     {
@@ -44,7 +45,7 @@ let questions  = [
 // Create Some Variables
 // Render Questions
 
-const lastQuestion = questions.length - 1;
+var lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 
 function renderQuestion() {
@@ -59,12 +60,13 @@ start.addEventListener("click", startQuiz);
 
 // Start Quiz
 function startQuiz(){
+    renderCounter();
     start.style.display = "none"
     renderQuestion();
     quiz.style.display = "block"
     renderProgress();
-    renderCounter();
-    TIMER = setInterval(renderCounter, 1000);
+    
+    
 
 }
 
@@ -73,66 +75,69 @@ function renderProgress(){
     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id = "+qIndex +"></div>";
     }
+    
 }
 
 // counter render
-let count = 0;
-const questionTime = 10; // 10 seconds for every question
-const gaugeWidth = 150; // 150px
-const gaugeUnit = gaugeWidth / questionTime;
+let count = 36;
 let TIMER;
 let score = 0;
 
 
-function renderCounter() {
-    if(count <= questionTime) {
-        counter.innerHTML = count;
-        timeGauge.style.width = gaugeUnit * count + "px";
-        count++;
-    }else{
-        count = 0;
 
-        if(runningQuestion < lastQuestion){
-            runningQuestion++;
-            renderQuestion();
+function renderCounter() {
+    TIMER = setInterval(function(){
+        count--;
+
+        if(count > -1) {
+            counter.innerHTML = count;
+            
         }else{
-            // End of quiz and counter and show the score
             clearInterval(TIMER);
+            quiz.style.display = 'none';
             scoreRender();
-           
+
         }
-    }
-    
+    }, 1000);
 }
 
-
 // Check Answer Function
-function checkAnswer(answer){
+function reconcileQuestion(answer){
+
     if(answer == questions[runningQuestion].correct) {
         score++;
         answerIsCorrect();
+        
     }else{
-        anwerIsWrong();
+        count = count - 5;
+        answerIsWrong();
+        
     }
-    count = 0;
+    
+    
     if(runningQuestion < lastQuestion){
         runningQuestion++;
+
         renderQuestion();
+        
     }else{
         // End of quiz and show the score
-        clearInterval(TIMER);
+        quiz.style.display = 'none';
         scoreRender();
+        //CHeck if user made highscore board and if so let htem input initials
     }
-}
+    
+    }
+    
 
 // Answer is Correct
 function answerIsCorrect(){
-    document.getElementById(runningQuestion).style.backgroundColor = "green";
+    document.getElementById(runningQuestion)
 }
 
 // Answer is Wrong
 function answerIsWrong(){
-    document.getElementById(runningQuestion).style.backgroundColor = "red";
+    document.getElementById(runningQuestion)
 }
 
 // Score render
@@ -141,10 +146,28 @@ function scoreRender(){
     scoreDiv.style.display = "block";
 
     // calculate the amount of question percent answered by the user
-    const scorePercent = Math.round (100 * score/questions.length);
+    var scorePercent = Math.round (100 * score/questions.length);
 
     scoreDiv.innerHTML += "<p>" + scorePercent + "%</p>";
+    scoreDiv.innerHTML += "<input id='initials' placeholder='initials'>";
+    scoreDiv.innerHTML += "<button id='high-score-ini' onclick=''>Save</button>";
+
+    //We need functoin for onclick
+ 
+   
+
+
+    //Data store in local storage must be a string
+    //[{}, {}] => JSON.stringify()
+//JSON.parse()
+//localStorage.getItem()
+//localStorage.setItem()
+
+// input intials and log high score at the end of quiz
+
 
     
 }
+
+
 

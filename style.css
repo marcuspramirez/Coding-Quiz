@@ -5,6 +5,9 @@
     height: 100px;
     font-weight: bolder;
     font-size: 25px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
     
 }
 
@@ -13,22 +16,39 @@ body {
 }
 
 #choices {
-    color: rgb(230, 198, 19);
-    font-size: 25px;
+    
     text-align: center;
+
 }
+
+
+
 
 #question {
     color: rgb(230, 198, 19);
     font-weight: bold;
     font-size: 50px;
     text-align: center;
+    
 }
 
 #timer {
     color: rgb(230, 198, 19);
-    font-size: 15px;
+    font-size: 25px;
     text-align: center;
     font-weight: bold;
 
+}
+
+#scoreContainer {
+    color: rgb(230, 198, 19);
+    font-size: 100px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#counter {
+    color: red;
+    
 }

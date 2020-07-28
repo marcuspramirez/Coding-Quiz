@@ -4,39 +4,46 @@
     <title>Quiz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta nme="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
       
 
-  
+    <div class="jumbotron">
+      <h1 class="display-4" style="color: white;">Coding Quiz for Beginners</h1>
+      <p class="lead" style="color: white;">This is a quiz over three main languages of web development.</p>
+      <hr class="my-4">
+      <p style="color: white;">This is a timed quiz, pay attention to the red timer!  For every incorrect answer, the timer will be reduced by 5 seconds.  When the timer reaches zero, the quiz will be over!</p>
+    </div>
     
     <div class = "container">
-
+      
       
       <button type="button" id = "start" class="btn btn-primary btn-lg">Press to start quiz!</button>
       <div id = "quiz" style = "display:none">
         <div id = "question"></div>
         <div id= "qImg"></div>
         
+        
+        
         <div id="choices">
-          <div class="choice" id = "A" onclick = "checkanswer('A')"></div>
-          <div class="choice" id = "B" onclick = "checkanswer('B')"></div>
-          <div class="choice" id = "C" onclick = "checkanswer('C')"></div>
+          <button type="button" class="choice" id = "A" onclick= "reconcileQuestion('A')"></button>
+          <button type="button" class="choice" id = "B" onclick= "reconcileQuestion('B')"></button>
+          <button type="button" class="choice" id = "C" onclick= "reconcileQuestion('C')"></button>  
         </div>
         
+        
+        
         <div id = "timer">
-          <div id = "counter"></div>
-          <div id = "btimeGauge"></div>
-          <div id = "timeGauge"></div>
+          <div id ="counter" ></div>
         </div>
           
         <div id="progress"></div>
     
-      <div id="scoreContainer" style = "display:none"></div>
-    
-    </div>
+        
+      </div>
+      <div id="scoreContainer" style = "display:none">You scored...</div>
 
     
       
