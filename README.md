@@ -1,4 +1,6 @@
 # Coding-Quiz
+Deployed Link:
+https://marcuspramirez.github.io/Coding-Quiz/quiz.html
 
 GIVEN a user is taking a code quiz
 WHEN user clicks the start button
@@ -12,4 +14,4 @@ THEN the quiz is over
 WHEN the quiz is over
 THEN the user can save user initials and score
 
-![](assets/Codequiz.PNG)
+
